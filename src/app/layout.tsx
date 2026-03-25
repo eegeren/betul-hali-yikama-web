@@ -39,6 +39,9 @@ export const metadata: Metadata = {
     title: siteMetadata.title,
     description: siteMetadata.description,
   },
+  verification: {
+    google: "XCBnd0GnaPOzAiD2lSe9MZvMlnfs2h3bIMrLkW8i0uo",
+  },
   category: "home services",
 };
 
