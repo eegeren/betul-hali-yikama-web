@@ -19,7 +19,7 @@ export function ContactSection() {
               <div className="mt-8 grid gap-4">
                 <a
                   href={contactLinks.tel}
-                  className="rounded-[1.5rem] border border-slate-200 bg-slate-50/80 p-5 transition hover:border-slate-300 hover:bg-white"
+                  className="rounded-[1.5rem] border border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,244,251,0.9))] p-5 transition hover:border-[var(--color-line-strong)] hover:bg-white"
                 >
                   <div className="flex items-center gap-3">
                     <Phone className="h-5 w-5 text-[var(--color-accent)]" />
@@ -31,7 +31,7 @@ export function ContactSection() {
                   href={contactLinks.whatsapp}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-[1.5rem] border border-slate-200 bg-slate-50/80 p-5 transition hover:border-slate-300 hover:bg-white"
+                  className="rounded-[1.5rem] border border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(240,251,255,0.92))] p-5 transition hover:border-[var(--color-line-strong)] hover:bg-white"
                 >
                   <div className="flex items-center gap-3">
                     <MessageCircle className="h-5 w-5 text-[var(--color-accent)]" />
@@ -43,7 +43,7 @@ export function ContactSection() {
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {businessInfoList.map((item) => (
-                  <div key={item.label} className="rounded-[1.5rem] border border-slate-200/80 bg-white p-4">
+                  <div key={item.label} className="rounded-[1.5rem] border border-[var(--color-line)] bg-white/92 p-4">
                     <p className="text-sm font-medium text-slate-500">{item.label}</p>
                     <p className="mt-2 break-words text-base font-semibold leading-7 text-slate-900">
                       {item.value}
@@ -52,7 +52,7 @@ export function ContactSection() {
                 ))}
               </div>
 
-              <div className="mt-8 rounded-[1.5rem] border border-slate-200/80 bg-white p-5">
+              <div className="mt-8 rounded-[1.5rem] border border-[var(--color-line)] bg-white/92 p-5">
                 <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
                   Çalışma Saatleri
                 </h3>
@@ -69,7 +69,7 @@ export function ContactSection() {
                 </div>
               </div>
 
-              <div className="mt-8 flex items-start gap-3 rounded-[1.5rem] bg-[var(--color-accent-soft)] p-5 text-sm leading-7 text-slate-700">
+              <div className="mt-8 flex items-start gap-3 rounded-[1.5rem] bg-[linear-gradient(135deg,var(--color-brand-pink-soft),var(--color-accent-soft))] p-5 text-sm leading-7 text-slate-700">
                 <Clock3 className="mt-1 h-5 w-5 shrink-0 text-[var(--color-accent-strong)]" />
                 <p>
                   Bandırma içinde servis planlaması için WhatsApp üzerinden yazabilir ya da doğrudan arayabilirsiniz. Yoğunluğa göre en uygun alım ve teslim gününü birlikte netleştiririz.
@@ -85,7 +85,7 @@ export function ContactSection() {
           <Reveal delay={0.1}>
             <div className="section-card h-full overflow-hidden p-4 sm:p-5">
               <div className="flex items-center gap-3 px-3 pb-4 pt-2">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--color-accent-soft)] text-[var(--color-accent)]">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,var(--color-brand-pink-soft),var(--color-accent-soft))] text-[var(--color-accent)]">
                   <MapPinned className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
@@ -100,7 +100,7 @@ export function ContactSection() {
                 src={contactLinks.mapsEmbed}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="h-[320px] w-full rounded-[1.5rem] border border-slate-200 sm:h-[420px]"
+                className="h-[320px] w-full rounded-[1.5rem] border border-[var(--color-line)] sm:h-[420px]"
               />
             </div>
           </Reveal>

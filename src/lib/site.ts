@@ -54,6 +54,7 @@ export const navigationItems = [
   { label: "Anasayfa", href: "#anasayfa" },
   { label: "Hizmetler", href: "#hizmetler" },
   { label: "Neden Biz", href: "#neden-biz" },
+  { label: "Fiyat Hesaplama", href: "#fiyat-hesaplama" },
   { label: "Yorumlar", href: "#yorumlar" },
   { label: "İletişim", href: "#iletisim" },
 ] as const;

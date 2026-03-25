@@ -3,7 +3,7 @@ import { businessInfo, contactLinks, navigationItems } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-white">
+    <footer className="border-t border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(255,241,249,0.92))]">
       <div className="site-shell py-10">
         <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
           <div>
@@ -21,7 +21,7 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-brand-pink-strong)]">
               Hızlı Linkler
             </h3>
             <div className="mt-4 flex flex-col gap-3">
@@ -29,7 +29,7 @@ export function Footer() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-sm text-slate-700 transition hover:text-slate-950"
+                  className="text-sm text-slate-700 transition hover:text-[var(--color-brand-pink-strong)]"
                 >
                   {item.label}
                 </a>
@@ -37,7 +37,7 @@ export function Footer() {
             </div>
           </div>
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-brand-pink-strong)]">
               İletişim
             </h3>
             <div className="mt-4 flex flex-col gap-3 text-sm text-slate-700">
@@ -49,7 +49,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-10 border-t border-slate-200 pt-6 text-sm text-slate-500">
+        <div className="mt-10 border-t border-[var(--color-line)] pt-6 text-sm text-slate-500">
           © {new Date().getFullYear()} {businessInfo.businessName}. Tüm hakları saklıdır.
         </div>
       </div>

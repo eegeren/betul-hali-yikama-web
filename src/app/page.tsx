@@ -1,10 +1,12 @@
 import { CTASection } from "@/components/site/cta-section";
 import { ContactSection } from "@/components/site/contact-section";
+import { ExampleGallery } from "@/components/site/example-gallery";
 import { FloatingWhatsAppButton } from "@/components/site/floating-whatsapp-button";
 import { Footer } from "@/components/site/footer";
 import { Hero } from "@/components/site/hero";
 import { MobileStickyCTA } from "@/components/site/mobile-sticky-cta";
 import { ProcessSteps } from "@/components/site/process-steps";
+import { PriceCalculator } from "@/components/site/price-calculator";
 import { ReviewsSection } from "@/components/site/reviews-section";
 import { ScrollProgress } from "@/components/site/scroll-progress";
 import { ServicesSection } from "@/components/site/services-section";
@@ -54,6 +56,8 @@ export default function Home() {
         <ServicesSection />
         <WhyChooseUs />
         <ProcessSteps />
+        <PriceCalculator />
+        <ExampleGallery />
         <ReviewsSection />
         <CTASection />
         <ContactSection />

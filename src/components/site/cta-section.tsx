@@ -6,16 +6,16 @@ export function CTASection() {
   return (
     <section className="section-space relative overflow-hidden">
       <ParallaxAccent
-        className="absolute left-[8%] top-8 hidden h-28 w-28 rounded-full bg-sky-200/45 blur-3xl lg:block"
+        className="absolute left-[8%] top-8 hidden h-28 w-28 rounded-full bg-[var(--color-accent)]/18 blur-3xl lg:block"
         offset={52}
       />
       <ParallaxAccent
-        className="absolute right-[10%] top-24 hidden h-36 w-36 rounded-full bg-[var(--color-accent)]/10 blur-3xl lg:block"
+        className="absolute right-[10%] top-24 hidden h-36 w-36 rounded-full bg-[var(--color-brand-pink)]/14 blur-3xl lg:block"
         offset={84}
       />
       <div className="site-shell">
         <Reveal>
-          <div className="section-card overflow-hidden px-5 py-8 sm:px-10 sm:py-10 lg:px-14 lg:py-14">
+          <div className="section-card mesh-surface overflow-hidden px-5 py-8 sm:px-10 sm:py-10 lg:px-14 lg:py-14">
             <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
               <div className="max-w-2xl">
                 <span className="eyebrow">Hızlı İletişim</span>

@@ -27,7 +27,7 @@ export function SiteHeader() {
   return (
     <header
       className={`sticky top-0 z-50 transition duration-300 ${
-        isScrolled ? "bg-white/88 shadow-[0_12px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl" : "bg-transparent"
+        isScrolled ? "bg-white/78 shadow-[0_12px_40px_rgba(242,8,139,0.08)] backdrop-blur-xl" : "bg-transparent"
       }`}
     >
       <div className="site-shell">
@@ -50,7 +50,7 @@ export function SiteHeader() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-slate-700 transition hover:text-slate-950"
+                className="text-sm font-medium text-slate-700 transition hover:text-[var(--color-brand-pink-strong)]"
               >
                 {item.label}
               </a>
@@ -77,7 +77,7 @@ export function SiteHeader() {
             type="button"
             aria-expanded={isOpen}
             aria-label="Menüyü aç"
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-900 shadow-sm lg:hidden"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--color-line)] bg-white/90 text-[var(--color-ink)] shadow-sm lg:hidden"
             onClick={() => setIsOpen((current) => !current)}
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -92,7 +92,7 @@ export function SiteHeader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="border-t border-slate-200/80 bg-white/96 backdrop-blur-xl lg:hidden"
+            className="border-t border-[var(--color-line)] bg-white/94 backdrop-blur-xl lg:hidden"
           >
             <div className="site-shell max-h-[calc(100vh-4.5rem)] overflow-y-auto py-6 pb-8">
               <nav className="flex flex-col gap-2">
@@ -100,7 +100,7 @@ export function SiteHeader() {
                   <a
                     key={item.href}
                     href={item.href}
-                    className="rounded-2xl px-4 py-3 text-base font-medium text-slate-800 transition hover:bg-slate-50"
+                    className="rounded-2xl px-4 py-3 text-base font-medium text-slate-800 transition hover:bg-[var(--color-brand-pink-soft)]"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.label}
