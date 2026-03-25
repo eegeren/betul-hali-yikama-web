@@ -6,7 +6,13 @@ import { businessInfo } from "@/lib/site";
 import { Reveal } from "./reveal";
 import { SectionTitle } from "./section-title";
 
-const PRICE_PER_SQUARE_METER = 100;
+const pricingOptions = [
+  { label: "Makina Halısı", pricePerSquareMeter: 100 },
+  { label: "Shaggy Halı", pricePerSquareMeter: 110 },
+  { label: "Yün Halı", pricePerSquareMeter: 130 },
+  { label: "El Halısı", pricePerSquareMeter: 150 },
+  { label: "Doğal / Bambu / İpek Halı", pricePerSquareMeter: 200 },
+] as const;
 
 function formatNumber(value: number) {
   return new Intl.NumberFormat("tr-TR", {
@@ -18,6 +24,10 @@ function formatNumber(value: number) {
 export function PriceCalculator() {
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
+  const [selectedType, setSelectedType] = useState(pricingOptions[0].label);
+
+  const selectedPricing =
+    pricingOptions.find((item) => item.label === selectedType) ?? pricingOptions[0];
 
   const area = useMemo(() => {
     const parsedWidth = Number(width.replace(",", "."));
@@ -34,11 +44,11 @@ export function PriceCalculator() {
     return parsedWidth * parsedHeight;
   }, [height, width]);
 
-  const total = area * PRICE_PER_SQUARE_METER;
+  const total = area * selectedPricing.pricePerSquareMeter;
   const hasResult = area > 0;
   const whatsappMessage = encodeURIComponent(
     hasResult
-      ? `Merhaba, halı ölçüm ${width} m x ${height} m. Toplam ${formatNumber(area)} m² için fiyat bilgisi almak istiyorum.`
+      ? `Merhaba, ${selectedPricing.label} için ölçüm ${width} m x ${height} m. Toplam ${formatNumber(area)} m² için fiyat bilgisi almak istiyorum.`
       : "Merhaba, halı yıkama fiyat bilgisi almak istiyorum."
   );
 
@@ -49,7 +59,7 @@ export function PriceCalculator() {
           <SectionTitle
             eyebrow="Fiyat Hesaplama"
             title="Metrekareye göre hızlı fiyat hesabı yapın"
-            description="Fiyatlandırma en x boy ölçüsüne göre hesaplanır. 1 m² için 100 TL baz alınarak tahmini toplam tutarı anında görebilirsiniz."
+            description="Halı türünü seçin, en ve boy ölçüsünü girin. Sistem seçtiğiniz halı tipinin m² fiyatına göre tahmini toplam tutarı anında hesaplasın."
             align="center"
           />
         </Reveal>
@@ -64,12 +74,29 @@ export function PriceCalculator() {
                 <div>
                   <h3 className="text-2xl font-semibold text-[var(--color-ink)]">Ölçü Girin</h3>
                   <p className="mt-1 text-sm leading-6 text-[var(--color-muted)]">
-                    Halınızın en ve boy ölçüsünü metre cinsinden yazın.
+                    Önce halı türünü seçin, ardından en ve boy ölçüsünü metre cinsinden yazın.
                   </p>
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="mt-8 grid gap-4">
+                <label className="block">
+                  <span className="mb-2 block text-sm font-semibold text-[var(--color-ink)]">Halı Türü</span>
+                  <select
+                    value={selectedType}
+                    onChange={(event) => setSelectedType(event.target.value)}
+                    className="w-full rounded-2xl border border-[var(--color-line)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition focus:border-[var(--color-accent)]"
+                  >
+                    {pricingOptions.map((item) => (
+                      <option key={item.label} value={item.label}>
+                        {item.label} - {formatNumber(item.pricePerSquareMeter)} TL / m²
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 <label className="block">
                   <span className="mb-2 block text-sm font-semibold text-[var(--color-ink)]">En (metre)</span>
                   <input
@@ -102,7 +129,10 @@ export function PriceCalculator() {
               <div className="mt-6 rounded-[1.5rem] bg-[linear-gradient(135deg,var(--color-brand-pink-soft),rgba(255,255,255,0.95))] p-5 text-sm leading-7 text-[var(--color-muted)]">
                 Hesaplama mantığı: <strong>en x boy = metrekare</strong>
                 <br />
-                Fiyatlandırma: <strong>1 m² = 100 TL</strong>
+                Seçilen fiyat:{" "}
+                <strong>
+                  {selectedPricing.label} - {formatNumber(selectedPricing.pricePerSquareMeter)} TL / m²
+                </strong>
               </div>
             </div>
           </Reveal>
@@ -131,7 +161,14 @@ export function PriceCalculator() {
               <div className="mt-6 rounded-[1.5rem] border border-[var(--color-line)] bg-white/88 p-5 text-sm leading-7 text-[var(--color-muted)]">
                 Örnek: 2 metre x 3 metre halı için toplam alan 6 m² olur.
                 <br />
-                Tahmini ücret: <strong>{formatNumber(6 * PRICE_PER_SQUARE_METER)} TL</strong>
+                {selectedPricing.label} için tahmini ücret:{" "}
+                <strong>{formatNumber(6 * selectedPricing.pricePerSquareMeter)} TL</strong>
+              </div>
+
+              <div className="mt-4 rounded-[1.5rem] border border-[var(--color-line)] bg-[linear-gradient(135deg,rgba(255,255,255,0.94),rgba(255,244,251,0.9))] p-5 text-sm leading-7 text-[var(--color-muted)]">
+                İstisnai durumlar olabilir:
+                <br />
+                Çok hassas doku, ağır leke, özel işlem gerektiren ürünler, saçak ve kenar onarımı gibi durumlarda nihai fiyat inceleme sonrası netleşebilir.
               </div>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">

@@ -15,7 +15,7 @@ export function ServicesSection() {
             align="center"
           />
         </Reveal>
-        <div className="mt-12 grid gap-5 sm:mt-14 sm:gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-12 grid gap-5 sm:mt-14 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5">
           {services.map((item, index) => (
             <Reveal key={item.title} delay={index * 0.06}>
               <ServiceCard item={item} />

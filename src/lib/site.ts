@@ -59,6 +59,14 @@ export const navigationItems = [
   { label: "İletişim", href: "#iletisim" },
 ] as const;
 
+export const carpetPricing = [
+  { label: "Makina HalÄ±sÄ±", pricePerSquareMeter: 100 },
+  { label: "Shaggy HalÄ±", pricePerSquareMeter: 110 },
+  { label: "YÃ¼n HalÄ±", pricePerSquareMeter: 130 },
+  { label: "El HalÄ±sÄ±", pricePerSquareMeter: 150 },
+  { label: "DoÄŸal / Bambu / Ä°pek HalÄ±", pricePerSquareMeter: 200 },
+] as const;
+
 export type IconItem = {
   title: string;
   description: string;
@@ -94,6 +102,12 @@ export const services: IconItem[] = [
     description:
       "Makine halısı, yün halı ve hassas dokular için kumaşa uygun, özenli yıkama süreci uygulanır.",
     icon: WashingMachine,
+  },
+  {
+    title: "Yerinde Yıkama",
+    description:
+      "Koltuk, sandalye ve benzeri döşemeli ürünlerde adresinizde uygulanan kontrollü temizlikle pratik ve hijyenik sonuç sağlanır.",
+    icon: Sparkles,
   },
   {
     title: "Koltuk Yıkama",

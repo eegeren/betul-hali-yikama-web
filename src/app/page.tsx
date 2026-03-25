@@ -4,6 +4,7 @@ import { ExampleGallery } from "@/components/site/example-gallery";
 import { FloatingWhatsAppButton } from "@/components/site/floating-whatsapp-button";
 import { Footer } from "@/components/site/footer";
 import { Hero } from "@/components/site/hero";
+import { IntroVideoSection } from "@/components/site/intro-video-section";
 import { MobileStickyCTA } from "@/components/site/mobile-sticky-cta";
 import { ProcessSteps } from "@/components/site/process-steps";
 import { PriceCalculator } from "@/components/site/price-calculator";
@@ -53,6 +54,7 @@ export default function Home() {
       <SiteHeader />
       <main className="snap-y snap-proximity">
         <Hero />
+        <IntroVideoSection />
         <ServicesSection />
         <WhyChooseUs />
         <ProcessSteps />
