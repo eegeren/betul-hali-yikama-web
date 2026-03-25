@@ -22,33 +22,31 @@ function formatNumber(value: number) {
 }
 
 export function PriceCalculator() {
-  const [width, setWidth] = useState("");
-  const [height, setHeight] = useState("");
+  const [squareMeters, setSquareMeters] = useState("");
   const [selectedType, setSelectedType] = useState<string>(pricingOptions[0].label);
 
   const selectedPricing =
     pricingOptions.find((item) => item.label === selectedType) ?? pricingOptions[0];
 
   const area = useMemo(() => {
-    const parsedWidth = Number(width.replace(",", "."));
-    const parsedHeight = Number(height.replace(",", "."));
+    const parsedArea = Number(squareMeters.replace(",", "."));
 
-    if (!Number.isFinite(parsedWidth) || !Number.isFinite(parsedHeight)) {
+    if (!Number.isFinite(parsedArea)) {
       return 0;
     }
 
-    if (parsedWidth <= 0 || parsedHeight <= 0) {
+    if (parsedArea <= 0) {
       return 0;
     }
 
-    return parsedWidth * parsedHeight;
-  }, [height, width]);
+    return parsedArea;
+  }, [squareMeters]);
 
   const total = area * selectedPricing.pricePerSquareMeter;
   const hasResult = area > 0;
   const whatsappMessage = encodeURIComponent(
     hasResult
-      ? `Merhaba, ${selectedPricing.label} için ölçüm ${width} m x ${height} m. Toplam ${formatNumber(area)} m² için fiyat bilgisi almak istiyorum.`
+      ? `Merhaba, ${selectedPricing.label} için toplam ${formatNumber(area)} m² halı yıkama fiyat bilgisi almak istiyorum.`
       : "Merhaba, halı yıkama fiyat bilgisi almak istiyorum."
   );
 
@@ -59,7 +57,7 @@ export function PriceCalculator() {
           <SectionTitle
             eyebrow="Fiyat Hesaplama"
             title="Metrekareye göre hızlı fiyat hesabı yapın"
-            description="Halı türünü seçin, en ve boy ölçüsünü girin. Sistem seçtiğiniz halı tipinin m² fiyatına göre tahmini toplam tutarı anında hesaplasın."
+            description="Halı türünü seçin ve halınızın toplam metrekaresini yazın. Sistem seçtiğiniz halı tipinin m² fiyatına göre tahmini toplam tutarı anında hesaplasın."
             align="center"
           />
         </Reveal>
@@ -74,7 +72,7 @@ export function PriceCalculator() {
                 <div>
                   <h3 className="text-2xl font-semibold text-[var(--color-ink)]">Ölçü Girin</h3>
                   <p className="mt-1 text-sm leading-6 text-[var(--color-muted)]">
-                    Önce halı türünü seçin, ardından en ve boy ölçüsünü metre cinsinden yazın.
+                    Önce halı türünü seçin, ardından halınızın toplam metrekaresini yazın.
                   </p>
                 </div>
               </div>
@@ -96,38 +94,24 @@ export function PriceCalculator() {
                 </label>
               </div>
 
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="mt-4 grid gap-4">
                 <label className="block">
-                  <span className="mb-2 block text-sm font-semibold text-[var(--color-ink)]">En (metre)</span>
+                  <span className="mb-2 block text-sm font-semibold text-[var(--color-ink)]">Metrekare (m²)</span>
                   <input
                     type="number"
                     inputMode="decimal"
                     min="0"
                     step="0.01"
-                    value={width}
-                    onChange={(event) => setWidth(event.target.value)}
-                    placeholder="Örn. 2"
-                    className="w-full rounded-2xl border border-[var(--color-line)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition focus:border-[var(--color-accent)]"
-                  />
-                </label>
-
-                <label className="block">
-                  <span className="mb-2 block text-sm font-semibold text-[var(--color-ink)]">Boy (metre)</span>
-                  <input
-                    type="number"
-                    inputMode="decimal"
-                    min="0"
-                    step="0.01"
-                    value={height}
-                    onChange={(event) => setHeight(event.target.value)}
-                    placeholder="Örn. 3"
+                    value={squareMeters}
+                    onChange={(event) => setSquareMeters(event.target.value)}
+                    placeholder="Örn. 6"
                     className="w-full rounded-2xl border border-[var(--color-line)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition focus:border-[var(--color-accent)]"
                   />
                 </label>
               </div>
 
               <div className="mt-6 rounded-[1.5rem] bg-[linear-gradient(135deg,var(--color-brand-pink-soft),rgba(255,255,255,0.95))] p-5 text-sm leading-7 text-[var(--color-muted)]">
-                Hesaplama mantığı: <strong>en x boy = metrekare</strong>
+                Hesaplama mantığı: <strong>toplam m² x birim fiyat</strong>
                 <br />
                 Seçilen fiyat:{" "}
                 <strong>
@@ -159,7 +143,7 @@ export function PriceCalculator() {
               </div>
 
               <div className="mt-6 rounded-[1.5rem] border border-[var(--color-line)] bg-white/88 p-5 text-sm leading-7 text-[var(--color-muted)]">
-                Örnek: 2 metre x 3 metre halı için toplam alan 6 m² olur.
+                Örnek: Toplam alan 6 m² ise sistem doğrudan bu değer üzerinden hesaplama yapar.
                 <br />
                 {selectedPricing.label} için tahmini ücret:{" "}
                 <strong>{formatNumber(6 * selectedPricing.pricePerSquareMeter)} TL</strong>
