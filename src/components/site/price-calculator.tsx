@@ -24,7 +24,7 @@ function formatNumber(value: number) {
 export function PriceCalculator() {
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
-  const [selectedType, setSelectedType] = useState(pricingOptions[0].label);
+  const [selectedType, setSelectedType] = useState<string>(pricingOptions[0].label);
 
   const selectedPricing =
     pricingOptions.find((item) => item.label === selectedType) ?? pricingOptions[0];
