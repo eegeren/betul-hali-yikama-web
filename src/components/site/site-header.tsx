@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, MessageCircle, Phone, X } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { businessInfo, contactLinks, navigationItems } from "@/lib/site";
 
@@ -32,16 +33,15 @@ export function SiteHeader() {
       <div className="site-shell">
         <div className="flex h-18 items-center justify-between gap-3 sm:h-20 sm:gap-4">
           <a href="#anasayfa" className="flex min-w-0 items-center gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-accent-soft)] text-base font-semibold text-[var(--color-accent-strong)] sm:h-11 sm:w-11 sm:text-lg">
-              B
-            </span>
-            <div className="min-w-0">
-              <p className="truncate font-display text-[1.35rem] font-semibold leading-none text-slate-950 sm:text-2xl">
-                {businessInfo.businessName}
-              </p>
-              <p className="mt-1 hidden text-[11px] uppercase tracking-[0.16em] text-slate-500 sm:block">
-                Bandırma Profesyonel Temizlik
-              </p>
+            <div className="flex h-12 items-center overflow-hidden sm:h-14">
+              <Image
+                src="/betullogo.png"
+                alt={`${businessInfo.businessName} logosu`}
+                width={210}
+                height={56}
+                className="h-full w-auto object-contain object-left"
+                priority
+              />
             </div>
           </a>
 

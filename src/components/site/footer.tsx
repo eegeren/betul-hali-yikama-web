@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { businessInfo, contactLinks, navigationItems } from "@/lib/site";
 
 export function Footer() {
@@ -6,9 +7,15 @@ export function Footer() {
       <div className="site-shell py-10">
         <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
           <div>
-            <p className="font-display text-3xl font-semibold text-slate-950">
-              {businessInfo.businessName}
-            </p>
+            <div className="flex h-16 items-center overflow-hidden">
+              <Image
+                src="/betullogo.png"
+                alt={`${businessInfo.businessName} logosu`}
+                width={240}
+                height={64}
+                className="h-full w-auto object-contain object-left"
+              />
+            </div>
             <p className="mt-3 max-w-md text-sm leading-7 text-slate-600">
               Bandırma&apos;da halı, koltuk ve ev tekstili temizliğinde hijyen, özen ve düzenli iletişimi bir araya getiren yerel hizmet anlayışı.
             </p>

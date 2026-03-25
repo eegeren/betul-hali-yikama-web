@@ -1,4 +1,5 @@
 import { CheckCircle2, PhoneCall } from "lucide-react";
+import Image from "next/image";
 import { businessBlurb, businessInfo, heroStats, trustHighlights } from "@/lib/site";
 import { ContactButtons } from "./contact-buttons";
 import { ParallaxAccent } from "./parallax-accent";
@@ -41,31 +42,25 @@ export function Hero() {
 
           <Reveal delay={0.12}>
             <div className="relative">
-              <ParallaxAccent
-                className="animate-drift-x absolute -left-6 top-10 hidden rounded-full border border-white/80 bg-white/80 px-4 py-3 text-sm font-medium text-slate-700 shadow-[0_18px_40px_rgba(15,23,42,0.08)] lg:block"
-                offset={-36}
-              >
-                Ücretsiz adresten alım
-              </ParallaxAccent>
-              <ParallaxAccent
-                className="animate-float-slow absolute -right-4 bottom-10 hidden rounded-full border border-[var(--color-accent)]/10 bg-[var(--color-accent-soft)] px-4 py-3 text-sm font-medium text-[var(--color-accent-strong)] lg:block"
-                offset={56}
-              >
-                Zamanında teslim
-              </ParallaxAccent>
               <div className="section-card relative overflow-hidden bg-white p-4 sm:p-8">
                 <div className="animate-pulse-soft absolute right-0 top-0 h-36 w-36 rounded-full bg-[var(--color-accent)]/10 blur-3xl" />
                 <div className="animate-float-slow absolute bottom-0 left-0 h-32 w-32 rounded-full bg-sky-100 blur-3xl" />
 
                 <div className="relative rounded-[1.5rem] border border-slate-100 bg-white p-4 shadow-[0_18px_50px_rgba(15,23,42,0.06)] sm:rounded-[1.75rem] sm:p-6">
                   <div className="flex items-start justify-between gap-4">
-                    <div>
+                    <div className="min-w-0">
                       <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[var(--color-accent-strong)]">
                         Premium Servis
                       </p>
-                      <h2 className="mt-3 font-display text-[1.9rem] text-slate-950 sm:text-3xl">
-                        {businessInfo.businessName}
-                      </h2>
+                      <div className="mt-3 flex h-14 items-center overflow-hidden sm:h-16">
+                        <Image
+                          src="/betullogo.png"
+                          alt={`${businessInfo.businessName} logosu`}
+                          width={220}
+                          height={64}
+                          className="h-full w-auto object-contain object-left"
+                        />
+                      </div>
                     </div>
                     <div className="rounded-2xl bg-[var(--color-accent-soft)] p-3 text-[var(--color-accent-strong)]">
                       <PhoneCall className="h-5 w-5" />
