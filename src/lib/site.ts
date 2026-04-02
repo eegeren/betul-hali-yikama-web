@@ -60,11 +60,14 @@ export const navigationItems = [
 ] as const;
 
 export const carpetPricing = [
-  { label: "Makina HalÄ±sÄ±", pricePerSquareMeter: 100 },
-  { label: "Shaggy HalÄ±", pricePerSquareMeter: 110 },
-  { label: "YÃ¼n HalÄ±", pricePerSquareMeter: 130 },
-  { label: "El HalÄ±sÄ±", pricePerSquareMeter: 150 },
-  { label: "DoÄŸal / Bambu / Ä°pek HalÄ±", pricePerSquareMeter: 200 },
+  { label: "Makina Halısı", pricePerSquareMeter: 130 },
+  { label: "Shaggy Halı", pricePerSquareMeter: 130 },
+  { label: "Yün Halı", pricePerSquareMeter: 150 },
+  { label: "El Halısı", pricePerSquareMeter: 180 },
+  { label: "Doğal İplik / Viskon Halı", pricePerSquareMeter: 200 },
+  { label: "Bambu Halı", pricePerSquareMeter: 200 },
+  { label: "Çin Halısı", pricePerSquareMeter: 250 },
+  { label: "İpek Halı", pricePerSquareMeter: 250 },
 ] as const;
 
 export type IconItem = {

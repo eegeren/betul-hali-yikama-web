@@ -2,17 +2,9 @@
 
 import { Calculator, MessageCircle } from "lucide-react";
 import { useMemo, useState } from "react";
-import { businessInfo } from "@/lib/site";
+import { businessInfo, carpetPricing } from "@/lib/site";
 import { Reveal } from "./reveal";
 import { SectionTitle } from "./section-title";
-
-const pricingOptions = [
-  { label: "Makina Halısı", pricePerSquareMeter: 100 },
-  { label: "Shaggy Halı", pricePerSquareMeter: 110 },
-  { label: "Yün Halı", pricePerSquareMeter: 130 },
-  { label: "El Halısı", pricePerSquareMeter: 150 },
-  { label: "Doğal / Bambu / İpek Halı", pricePerSquareMeter: 200 },
-] as const;
 
 function formatNumber(value: number) {
   return new Intl.NumberFormat("tr-TR", {
@@ -23,10 +15,10 @@ function formatNumber(value: number) {
 
 export function PriceCalculator() {
   const [squareMeters, setSquareMeters] = useState("");
-  const [selectedType, setSelectedType] = useState<string>(pricingOptions[0].label);
+  const [selectedType, setSelectedType] = useState<string>(carpetPricing[0].label);
 
   const selectedPricing =
-    pricingOptions.find((item) => item.label === selectedType) ?? pricingOptions[0];
+    carpetPricing.find((item) => item.label === selectedType) ?? carpetPricing[0];
 
   const area = useMemo(() => {
     const parsedArea = Number(squareMeters.replace(",", "."));
@@ -85,7 +77,7 @@ export function PriceCalculator() {
                     onChange={(event) => setSelectedType(event.target.value)}
                     className="w-full rounded-2xl border border-[var(--color-line)] bg-white px-4 py-3 text-base text-[var(--color-ink)] outline-none transition focus:border-[var(--color-accent)]"
                   >
-                    {pricingOptions.map((item) => (
+                    {carpetPricing.map((item) => (
                       <option key={item.label} value={item.label}>
                         {item.label} - {formatNumber(item.pricePerSquareMeter)} TL / m²
                       </option>
